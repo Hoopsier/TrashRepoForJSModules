@@ -1,13 +1,7 @@
 console.log("Hello World!");
 
-
-let uname = prompt("Gimme your name");
-gibNambe(uname);
-suminator();
-nerd(uname);
-humanitysMistake();
-
-function gibNambe(uname) {
+function gibNambe() {
+  let uname = prompt("Gimme your name");
   document.getElementById("greet").innerHTML = `Hello ${uname}`; // thanks JS for deprecating a variable name
 }
 
@@ -16,13 +10,13 @@ function suminator() {
   let sum = 0;
   for (let i = 0; i < 3; i++) {
     input = parseInt(prompt(`Gimme integers ${i}`));
-    if (isNaN(input)) { i--; continue; }
+    if (input == NAN) { i--; continue; }
     sum += input
   }
   document.getElementById("sum").innerHTML = `sum of those is ${sum}`;
 }
 
-function nerd(uname) {
+function nerd(name) {
   let ran = Math.round(Math.random() * 3); //0,1,2,3  so 4 integer outcomes
   let nerd = "";
   switch (ran) {
@@ -39,19 +33,13 @@ function nerd(uname) {
       nerd = "nerdstyle 4";
       break;
   }
-  document.getElementById("nerd").innerHTML = `${uname}, you're a ${nerd}`;
+  document.getElementById("nerd").innerHTML = `${name}, you're a ${nerd}`;
 }
 
-// there was a way to not have leap years and have the same sum of days in every month
 function humanitysMistake() {
   let year = parseInt(prompt("gimme a year"));
-  let leap = true;
-  if (isNaN(year)) {
-    humanitysMistake(); // Yes recursiveness works this way
-    return; // not printing anything yet so should be chill?
+  if (year == NAN) {
+    humanitysMistake(); // NOTE: check to see if recursiveness works this way too
+    return; //how do you throw away
   }
-  if (year % 100 == 0 && year % 400 != 0) leap = false;
-  if (year % 4 != 0) leap = false;
-  if (leap) { getElementById("leap").innerHTML = "Yes leap year"; return; }
-  else document.getElementById("leap").innerHTML = "Not leap year";
 }
